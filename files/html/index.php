@@ -6,7 +6,11 @@
  * Time: 11:14 PM
  */
 error_reporting(0);
-if($_SERVER['HTTP_X_FORWARDED_FOR'] !== '127.0.0.1') {
+if(!isset($_SERVER['HTTP_X_REAL_IP'])) {
+    die("只能本地访问。");
+}
+
+if($_SERVER['HTTP_X_REAL_IP'] !== '127.0.0.1') {
     die("只能本地访问。");
 }
 
